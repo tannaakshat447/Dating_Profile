@@ -18,6 +18,7 @@
             --orange: #e17055;
             --pink: #e84393;
             --cyan: #00cec9;
+            --yellow: #f1c40f; /* Added for Reviews */
             --glass-bg: rgba(255, 255, 255, 0.85);
             --glass-border: rgba(255, 255, 255, 0.95);
             --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
@@ -34,7 +35,7 @@
             padding: 20px;
         }
 
-        /* --- ANIMATED BACKGROUND --- */
+        /* --- BACKGROUND --- */
         .blob-cont { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; overflow: hidden; }
         .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6; animation: float 20s infinite alternate; }
         .b1 { width: 50vw; height: 50vw; background: #a29bfe; top: -10%; left: -10%; }
@@ -80,6 +81,7 @@
         .border-orange { border-left: 6px solid var(--orange); }
         .border-pink   { border-left: 6px solid var(--pink); }
         .border-cyan   { border-left: 6px solid var(--cyan); }
+        .border-yellow { border-left: 6px solid var(--yellow); }
 
         h2 { font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.5px; }
         p { font-size: 0.95rem; line-height: 1.6; color: var(--text-sub); }
@@ -134,6 +136,30 @@
         .bio-item small { display: block; font-size: 0.75rem; text-transform: uppercase; color: #b2bec3; font-weight: 700; margin-bottom: 5px; }
         .bio-item span { font-size: 1.1rem; font-weight: 600; color: var(--text-main); }
 
+        .green-flags li { margin-bottom: 12px; display: flex; align-items: center; gap: 12px; font-weight: 500; font-size: 0.95rem; }
+        .green-flags i { color: var(--green); font-size: 1.1rem; }
+
+        /* --- REVIEWS SECTION --- */
+        .review {
+            background: rgba(255,255,255,0.5);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            font-style: italic;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .review p { margin: 0; font-size: 0.95rem; color: var(--text-main); }
+        .review span {
+            display: block;
+            text-align: right;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-sub);
+            margin-top: 5px;
+            font-style: normal;
+            text-transform: uppercase;
+        }
+
         /* --- RPG STATS --- */
         .rpg-stats { display: flex; flex-direction: column; gap: 15px; }
         .rpg-row { display: flex; align-items: center; gap: 15px; }
@@ -148,6 +174,7 @@
         .rpg-fill { height: 100%; border-radius: 5px; position: relative; }
         .rpg-fill::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.3) 25%, transparent 25%); background-size: 10px 100%; }
 
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
         .tag { background: rgba(232, 67, 147, 0.1); color: var(--pink); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(232, 67, 147, 0.2); }
 
         /* Vibe Check */
@@ -225,8 +252,8 @@
         <div class="card border-blue">
             <h2 style="color: var(--blue)"><i class="fas fa-fingerprint"></i> Essentials</h2>
             <ul class="bio-list">
-                <li class="bio-item"><small>Location</small><span>Ahmedabad, Gujarat</span></li>
-                <li class="bio-item"><small>Age</small><span>18 Years</span></li>
+                <li class="bio-item"><small>Location</small><span>Ranchi, IN</span></li>
+                <li class="bio-item"><small>Age</small><span>20 Years</span></li>
                 <li class="bio-item"><small>Height</small><span>5'11"</span></li>
                 <li class="bio-item"><small>Degree</small><span>B.Tech</span></li>
             </ul>
@@ -234,9 +261,23 @@
 
         <div class="card border-green">
             <h2 style="color: var(--green)"><i class="fas fa-flag"></i> Green Flags</h2>
-            <p>✓ Replies in 0.2 seconds</p>
-            <p>✓ Top-tier playlist curator</p>
-            <p>✓ Will defend you in comments</p>
+            <ul class="green-flags">
+                <li><i class="fas fa-bolt"></i> Replies in 0.2 seconds</li>
+                <li><i class="fas fa-music"></i> Top-tier playlist curator</li>
+                <li><i class="fas fa-shield-alt"></i> Will defend you in comments</li>
+            </ul>
+        </div>
+
+        <div class="card border-yellow">
+            <h2 style="color: var(--yellow)"><i class="fas fa-star"></i> 5-Star Reviews</h2>
+            <div class="review">
+                <p>"He's handsome (when he showers)."</p>
+                <span>- My Mom</span>
+            </div>
+            <div class="review">
+                <p>"Best tech support I never paid for."</p>
+                <span>- My Grandma</span>
+            </div>
         </div>
 
         <div class="card span-2 border-orange">
@@ -273,6 +314,17 @@
                 <button class="vibe-btn" id="futureBtn" style="background: #a29bfe; color: white;">🔮 Our Future</button>
             </div>
             <div class="vibe-result" id="funDisplay">> Press a button for truth.</div>
+        </div>
+
+        <div class="card border-pink">
+            <h2 style="color: var(--pink)"><i class="fas fa-glass-cheers"></i> Ideally We Are...</h2>
+            <div class="tags">
+                <span class="tag">☕ Coffee Run</span>
+                <span class="tag">🚗 Long Drives</span>
+                <span class="tag">🍕 Pizza Night</span>
+                <span class="tag">🏸 Badminton</span>
+                <span class="tag">📸 Photo Walk</span>
+            </div>
         </div>
 
         <div class="card span-2 border-pink" id="finalAsk">
