@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshat Tanna | Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --text-main: #2d3436;
+            --text-sub: #636e72;
+            --indigo: #6c5ce7;
+            --purple: #a55eea;
+            --blue: #0984e3;
+            --green: #00b894;
+            --orange: #e17055;
+            --pink: #e84393;
+            --cyan: #00cec9;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.95);
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        /* --- BACKGROUND --- */
+        .blob-cont { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; overflow: hidden; }
+        .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6; animation: float 20s infinite alternate; }
+        .b1 { width: 50vw; height: 50vw; background: #a29bfe; top: -10%; left: -10%; }
+        .b2 { width: 40vw; height: 40vw; background: #74b9ff; bottom: -10%; right: -10%; animation-delay: -5s; }
+        .b3 { width: 30vw; height: 30vw; background: #81ecec; top: 40%; left: 30%; animation-delay: -10s; }
+        @keyframes float { from { transform: translate(0,0) rotate(0deg); } to { transform: translate(20px, 40px) rotate(10deg); } }
+
+        /* --- LAYOUT --- */
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 350px 1fr; /* Default: Sidebar + Content */
+            gap: 25px;
+            align-items: start;
+        }
+
+        /* --- CARD STYLES --- */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: rgba(255,255,255,1);
+            z-index: 5;
+        }
+
+        .border-indigo { border-left: 6px solid var(--indigo); }
+        .border-purple { border-left: 6px solid var(--purple); }
+        .border-blue   { border-left: 6px solid var(--blue); }
+        .border-green  { border-left: 6px solid var(--green); }
+        .border-orange { border-left: 6px solid var(--orange); }
+        .border-pink   { border-left: 6px solid var(--pink); }
+        .border-cyan   { border-left: 6px solid var(--cyan); }
+
+        h2 { font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.5px; }
+        p { font-size: 0.95rem; line-height: 1.6; color: var(--text-sub); }
+        
+        /* --- SIDEBAR --- */
+        .sidebar { position: sticky; top: 20px; text-align: center; z-index: 100; }
+
+        .profile-container { position: relative; width: 150px; height: 150px; margin: 0 auto 20px; }
+        .profile-pic {
+            width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+            border: 4px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .online-dot {
+            position: absolute; bottom: 10px; right: 10px; width: 20px; height: 20px;
+            background: #2ecc71; border: 3px solid white; border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); } 100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); } }
+
+        h1 { font-size: 2rem; margin-bottom: 5px; font-weight: 800; color: var(--text-main); }
+        .badge { font-size: 0.9rem; background: #dfe6e9; color: var(--indigo); padding: 4px 8px; border-radius: 6px; vertical-align: middle; margin-left: 5px; }
+        
+        .tagline {
+            font-family: 'Courier New', monospace; font-size: 0.95rem; color: var(--text-sub);
+            margin-bottom: 25px; min-height: 20px; font-weight: 600;
+        }
+
+        .btn-group { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
+        button {
+            border: none; padding: 14px; border-radius: 12px; font-weight: 700; cursor: pointer; font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem; transition: transform 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-main { background: linear-gradient(135deg, var(--indigo), #a55eea); color: white; box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3); }
+        .btn-sub { background: white; color: var(--text-main); border: 2px solid #dfe6e9; }
+        button:hover { transform: scale(1.03); }
+
+        .notice-box { height: 25px; margin-bottom: 20px; font-size: 0.85rem; color: var(--indigo); font-weight: 600; opacity: 0; transition: opacity 0.3s; }
+        .notice-box.show { opacity: 1; }
+
+        .social-links { display: flex; justify-content: center; gap: 15px; }
+        .social-btn {
+            width: 45px; height: 45px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center;
+            color: var(--text-sub); text-decoration: none; font-size: 1.3rem; transition: all 0.2s; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .social-btn:hover { background: var(--indigo); color: white; transform: translateY(-3px); }
+
+        /* --- CONTENT GRID --- */
+        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .span-2 { grid-column: span 2; }
+
+        .bio-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .bio-item small { display: block; font-size: 0.75rem; text-transform: uppercase; color: #b2bec3; font-weight: 700; margin-bottom: 5px; }
+        .bio-item span { font-size: 1.1rem; font-weight: 600; color: var(--text-main); }
+
+        .green-flags li { margin-bottom: 12px; display: flex; align-items: center; gap: 12px; font-weight: 500; font-size: 0.95rem; }
+        .green-flags i { color: var(--green); font-size: 1.1rem; }
+
+        /* --- RPG STATS --- */
+        .rpg-stats { display: flex; flex-direction: column; gap: 15px; }
+        .rpg-row { display: flex; align-items: center; gap: 15px; }
+        .rpg-icon { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
+        .icon-int { background: rgba(9, 132, 227, 0.1); color: var(--blue); }
+        .icon-hum { background: rgba(225, 112, 85, 0.1); color: var(--orange); }
+        .icon-loy { background: rgba(0, 184, 148, 0.1); color: var(--green); }
+        
+        .rpg-data { flex-grow: 1; }
+        .rpg-header { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .rpg-bar-bg { height: 10px; background: rgba(0,0,0,0.05); border-radius: 5px; overflow: hidden; position: relative; }
+        .rpg-fill { height: 100%; border-radius: 5px; position: relative; }
+        .rpg-fill::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.3) 25%, transparent 25%); background-size: 10px 100%; }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag { background: rgba(232, 67, 147, 0.1); color: var(--pink); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(232, 67, 147, 0.2); }
+
+        /* Vibe Check */
+        .vibe-actions { display: flex; gap: 10px; margin-bottom: 15px; }
+        .vibe-btn { flex: 1; padding: 12px; font-size: 0.9rem; }
+        .vibe-result { background: #2d3436; color: var(--cyan); padding: 20px; border-radius: 12px; font-family: monospace; min-height: 70px; display: flex; align-items: center; border-left: 5px solid var(--cyan); font-size: 0.95rem; line-height: 1.4; }
+
+        /* --- PROPOSAL SECTION --- */
+        .proposal-question { font-size: 1.5rem; margin: 15px 0 25px; color: var(--text-main); font-weight: 800; }
+        .proposal-actions { display: flex; gap: 15px; margin-top: 15px; }
+        .proposal-btn { flex: 1; padding: 15px; font-size: 1rem; border-radius: 15px; transition: transform 0.2s; }
+        .btn-yes { background: var(--green); color: white; box-shadow: 0 5px 15px rgba(0, 184, 148, 0.4); }
+        .btn-no { background: #dfe6e9; color: var(--text-sub); }
+        .proposal-result { 
+            display: none; margin-top: 20px; padding: 20px; border-radius: 12px; 
+            background: white; border-left: 5px solid transparent; font-size: 1rem; line-height: 1.6;
+        }
+
+        .footer { grid-column: span 2; text-align: center; color: #b2bec3; font-size: 0.9rem; padding: 30px 0; font-weight: 500; }
+        #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
+
+        /* --- RESPONSIVE FIXES (Laptop vs Mobile) --- */
+        @media (max-width: 900px) {
+            /* Switch to Single Column Stack */
+            .wrapper { grid-template-columns: 1fr; gap: 20px; }
+            
+            /* Sidebar becomes a Header Card */
+            .sidebar { 
+                position: relative; 
+                top: 0; 
+                width: 100%; 
+                max-width: 450px; /* Prevent it from being too wide on tablets */
+                margin: 0 auto; 
+            }
+            
+            /* Content Grid becomes Single Column */
+            .content-grid { grid-template-columns: 1fr; }
+            
+            /* Span-2 cards now take up the single column (full width) */
+            .span-2 { grid-column: span 1; }
+
+            /* Text sizing adjustments for mobile */
+            h1 { font-size: 1.75rem; }
+            .btn-group { flex-direction: row; } /* Side-by-side buttons on mobile */
+            button { flex: 1; font-size: 0.85rem; padding: 12px; }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="blob-cont">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+</div>
+
+<div class="wrapper">
+
+    <aside class="sidebar card border-indigo">
+        <div class="profile-container">
+            <img src="profile.jpg" alt="Akshat" class="profile-pic">
+            <div class="online-dot"></div>
+        </div>
+        
+        <h1>Akshat Tanna <span class="badge"><i class="fas fa-code"></i></span></h1>
+        <div class="tagline" id="tagline">Loading...</div>
+
+        <div class="btn-group">
+            <button id="likeBtn" class="btn-main"><i class="fas fa-heart"></i> Send Heart</button>
+            <button id="connectBtn" class="btn-sub"><i class="fas fa-paper-plane"></i> Send Proposal Msg</button>
+        </div>
+
+        <div class="notice-box" id="heroNotice"></div>
+
+        <div class="social-links">
+            <a href="https://instagram.com/akshat47_pvt" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.snapchat.com/add/tanna_akshhat447" target="_blank" class="social-btn"><i class="fab fa-snapchat-ghost"></i></a>
+            <a href="https://www.linkedin.com/in/akshattanna447" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </aside>
+
+    <main class="content-grid">
+
+        <div class="card span-2 border-purple">
+            <h2 style="color: var(--purple)"><i class="fas fa-book-open"></i> The Story</h2>
+            <p>
+                Hey, I'm Akshat. I’m an engineering student who believes in building things that matter—whether that’s a clean piece of code or a genuine connection. 
+                I’m ambitious about my career (Tech Leader in the making), but I never take myself too seriously.
+            </p>
+        </div>
+
+        <div class="card border-blue">
+            <h2 style="color: var(--blue)"><i class="fas fa-fingerprint"></i> Essentials</h2>
+            <ul class="bio-list">
+                <li class="bio-item"><small>Location</small><span>Ranchi, IN</span></li>
+                <li class="bio-item"><small>Age</small><span>20 Years</span></li>
+                <li class="bio-item"><small>Height</small><span>5'11"</span></li>
+                <li class="bio-item"><small>Degree</small><span>B.Tech</span></li>
+            </ul>
+        </div>
+
+        <div class="card border-green">
+            <h2 style="color: var(--green)"><i class="fas fa-flag"></i> Green Flags</h2>
+            <ul class="green-flags">
+                <li><i class="fas fa-bolt"></i> Replies in 0.2 seconds</li>
+                <li><i class="fas fa-music"></i> Top-tier playlist curator</li>
+                <li><i class="fas fa-shield-alt"></i> Will defend you in comments</li>
+            </ul>
+        </div>
+
+        <div class="card span-2 border-orange">
+            <h2 style="color: var(--orange)"><i class="fas fa-gamepad"></i> Character Build</h2>
+            
+            <div class="rpg-stats">
+                <div class="rpg-row">
+                    <div class="rpg-icon icon-int"><i class="fas fa-brain"></i></div>
+                    <div class="rpg-data">
+                        <div class="rpg-header"><span>Intellect</span> <span>Lvl 99</span></div>
+                        <div class="rpg-bar-bg"><div class="rpg-fill" style="width: 95%; background: var(--blue);"></div></div>
+                    </div>
+                </div>
+                <div class="rpg-row">
+                    <div class="rpg-icon icon-hum"><i class="fas fa-laugh-squint"></i></div>
+                    <div class="rpg-data">
+                        <div class="rpg-header"><span>Humor</span> <span>Witty / Broken</span></div>
+                        <div class="rpg-bar-bg"><div class="rpg-fill" style="width: 85%; background: var(--orange);"></div></div>
+                    </div>
+                </div>
+                <div class="rpg-row">
+                    <div class="rpg-icon icon-loy"><i class="fas fa-heart"></i></div>
+                    <div class="rpg-data">
+                        <div class="rpg-header"><span>Loyalty</span> <span>Maxed Out</span></div>
+                        <div class="rpg-bar-bg"><div class="rpg-fill" style="width: 100%; background: var(--green);"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-pink">
+            <h2 style="color: var(--pink)"><i class="fas fa-glass-cheers"></i> Ideally We Are...</h2>
+            <div class="tags">
+                <span class="tag">☕ Coffee Run</span>
+                <span class="tag">🚗 Long Drives</span>
+                <span class="tag">🍕 Pizza Night</span>
+                <span class="tag">🏸 Badminton</span>
+                <span class="tag">📸 Photo Walk</span>
+            </div>
+        </div>
+
+        <div class="card border-cyan">
+            <h2 style="color: var(--cyan)"><i class="fas fa-magic"></i> Vibe Check</h2>
+            <div class="vibe-actions">
+                <button class="vibe-btn" id="toxicBtn" style="background: #ff7675; color: white;">🚩 My Toxic Trait</button>
+                <button class="vibe-btn" id="futureBtn" style="background: #a29bfe; color: white;">🔮 Our Future</button>
+            </div>
+            <div class="vibe-result" id="funDisplay">> Press a button to reveal the truth.</div>
+        </div>
+
+        <div class="card span-2 border-pink" id="finalAsk">
+            <h2 style="color: var(--pink)"><i class="fas fa-heart"></i> One Last Question...</h2>
+            <p>I've shared my story, my stats, and my vibes. But there's one thing missing. <strong>You.</strong></p>
+            
+            <div class="proposal-question">Will you be my girlfriend? 🌹</div>
+            
+            <div class="proposal-actions" id="pActions">
+                <button class="proposal-btn btn-yes" id="yesBtn">YES 💖</button>
+                <button class="proposal-btn btn-no" id="noBtn">No 💔</button>
+            </div>
+
+            <div class="proposal-result" id="pResult"></div>
+        </div>
+
+        <div class="footer">
+            Made with <i class="fas fa-heart" style="color: var(--pink)"></i> from Akshat © 2026
+        </div>
+
+    </main>
+</div>
+
+<canvas id="confetti-canvas"></canvas>
+
+<script>
+    /* --- TYPING EFFECT --- */
+    const tagline = document.getElementById("tagline");
+    const texts = ["Writing code & making plans.", "Engineering a better future.", "Looking for Player 2.", "Part-time Comedian."];
+    let tIdx = 0, cIdx = 0, isDel = false;
+
+    function type() {
+        let full = texts[tIdx];
+        tagline.textContent = full.substring(0, isDel ? cIdx - 1 : cIdx + 1);
+        isDel ? cIdx-- : cIdx++;
+        
+        let speed = isDel ? 40 : 80;
+        if (!isDel && cIdx === full.length) { speed = 2000; isDel = true; }
+        else if (isDel && cIdx === 0) { isDel = false; tIdx = (tIdx + 1) % texts.length; speed = 500; }
+        setTimeout(type, speed);
+    }
+    type();
+
+    /* --- SIDEBAR INTERACTIONS --- */
+    const notice = document.getElementById("heroNotice");
+    
+    // LIKE BUTTON (Burst from button center)
+    const likeBtn = document.getElementById("likeBtn");
+    likeBtn.addEventListener("click", () => {
+        const rect = likeBtn.getBoundingClientRect();
+        fireConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        notice.textContent = "Thanks! Feeling is mutual 😉";
+        notice.classList.add("show");
+        setTimeout(() => notice.classList.remove("show"), 3000);
+    });
+
+    // SEQUENTIAL PROPOSALS
+    const proposals = [
+        "Sent! My mom is currently reviewing your profile.",
+        "Success! You are now legally required to say hello.",
+        "Delivered! Please allow 2-3 business minutes for panic.",
+        "Sent! You have officially entered the boyfriend queue.",
+        "Done! I promise not to act cool about it."
+    ];
+    let propIdx = 0;
+
+    const conBtn = document.getElementById("connectBtn");
+    conBtn.addEventListener("click", () => {
+        conBtn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> Sending...";
+        setTimeout(() => {
+            notice.textContent = proposals[propIdx];
+            propIdx = (propIdx + 1) % proposals.length;
+            notice.classList.add("show");
+            conBtn.innerHTML = "<i class='fas fa-paper-plane'></i> Send Proposal Msg";
+            setTimeout(() => notice.classList.remove("show"), 4000);
+        }, 800);
+    });
+
+    /* --- VIBE CHECK (Sequential) --- */
+    const display = document.getElementById("funDisplay");
+    
+    const traits = [
+        "I rotate my phone 4 times to watch a video because auto-rotate hates me.",
+        "I have 57 tabs open and I refuse to close any of them.",
+        "I say 'long story short' and then talk for another 20 minutes.",
+        "I type passwords wrong, delete the whole thing, and type it wrong again.",
+        "I need 3 business days to recover from a minor social interaction."
+    ];
+    let traitIdx = 0;
+
+    const futures = [
+        "We buy a plant together. I name it. It dies in a week.",
+        "You ask me where the scissors are. I say 'in the drawer'. They are not.",
+        "We argue for 45 minutes about what to eat and end up eating cereal.",
+        "I pause the movie every 5 minutes to explain context you didn't ask for.",
+        "We go to Target for one thing and leave with a cart full of candles."
+    ];
+    let futureIdx = 0;
+
+    document.getElementById("toxicBtn").addEventListener("click", () => {
+        showText(traits[traitIdx]);
+        traitIdx = (traitIdx + 1) % traits.length;
+    });
+
+    document.getElementById("futureBtn").addEventListener("click", () => {
+        showText(futures[futureIdx]);
+        futureIdx = (futureIdx + 1) % futures.length;
+    });
+
+    function showText(txt) {
+        display.style.opacity = 0;
+        setTimeout(() => {
+            display.textContent = "> " + txt;
+            display.style.opacity = 1;
+        }, 200);
+    }
+
+    /* --- PROPOSAL LOGIC --- */
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const pResult = document.getElementById("pResult");
+    const pActions = document.getElementById("pActions");
+
+    yesBtn.addEventListener("click", () => {
+        fireConfetti(); fireConfetti();
+        pActions.style.display = "none";
+        pResult.innerHTML = "<strong>You just made me the happiest person alive! 😭💖</strong><br>I promise to cherish every moment, make you laugh, and be your biggest supporter. Let's build something beautiful.";
+        pResult.style.display = "block";
+        pResult.style.borderColor = "var(--green)";
+        pResult.style.color = "var(--text-main)";
+    });
+
+    noBtn.addEventListener("click", () => {
+        pActions.style.display = "none";
+        pResult.innerHTML = "<strong>I understand, and I respect your feelings. 🌼</strong><br>You're an amazing person, and I'm grateful just to know you. No pressure, no hard feelings—just glad I took the chance to ask.";
+        pResult.style.display = "block";
+        pResult.style.borderColor = "var(--text-sub)";
+        pResult.style.color = "var(--text-sub)";
+    });
+
+    /* --- CONFETTI ENGINE --- */
+    const canvas = document.getElementById("confetti-canvas");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    window.addEventListener('resize', resize); resize();
+
+    function fireConfetti(x, y) {
+        const originX = x || window.innerWidth / 2;
+        const originY = y || window.innerHeight / 2;
+
+        for(let i=0; i<80; i++) {
+            particles.push({
+                x: originX, 
+                y: originY,
+                vx: (Math.random()-0.5) * 25, 
+                vy: (Math.random()-0.5) * 25,
+                color: `hsl(${Math.random()*360}, 100%, 50%)`, 
+                life: 120,
+                size: Math.random() * 6 + 4
+            });
+        }
+    }
+
+    function render() {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        particles.forEach((p,i) => {
+            p.x += p.vx; 
+            p.y += p.vy; 
+            p.vy += 0.5;
+            p.life--;
+            
+            ctx.fillStyle = p.color; 
+            ctx.fillRect(p.x, p.y, p.size, p.size);
+            
+            if(p.life<=0) particles.splice(i,1);
+        });
+        requestAnimationFrame(render);
+    }
+    render();
+</script>
+</body>
+</html>
