@@ -18,7 +18,6 @@
             --orange: #e17055;
             --pink: #e84393;
             --cyan: #00cec9;
-            --yellow: #f1c40f;
             --glass-bg: rgba(255, 255, 255, 0.85);
             --glass-border: rgba(255, 255, 255, 0.95);
             --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
@@ -51,6 +50,8 @@
             grid-template-columns: 350px 1fr;
             gap: 25px;
             align-items: start;
+            width: 100%;
+            min-width: 0;
         }
 
         /* --- CARD STYLES --- */
@@ -81,7 +82,6 @@
         .border-orange { border-left: 6px solid var(--orange); }
         .border-pink   { border-left: 6px solid var(--pink); }
         .border-cyan   { border-left: 6px solid var(--cyan); }
-        .border-yellow { border-left: 6px solid var(--yellow); }
 
         h2 { font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.5px; }
         p { font-size: 0.95rem; line-height: 1.6; color: var(--text-sub); }
@@ -129,27 +129,12 @@
         .social-btn:hover { background: var(--indigo); color: white; transform: translateY(-3px); }
 
         /* --- CONTENT GRID --- */
-        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; min-width: 0; }
         .span-2 { grid-column: span 2; }
 
         .bio-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .bio-item small { display: block; font-size: 0.75rem; text-transform: uppercase; color: #b2bec3; font-weight: 700; margin-bottom: 5px; }
         .bio-item span { font-size: 1.1rem; font-weight: 600; color: var(--text-main); }
-
-        .green-flags li { margin-bottom: 12px; display: flex; align-items: center; gap: 12px; font-weight: 500; font-size: 0.95rem; }
-        .green-flags i { color: var(--green); font-size: 1.1rem; }
-
-        /* --- REVIEWS --- */
-        .review {
-            background: rgba(255,255,255,0.5);
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            font-style: italic;
-            border: 1px solid rgba(255,255,255,0.6);
-        }
-        .review p { margin: 0; font-size: 0.95rem; color: var(--text-main); }
-        .review span { display: block; text-align: right; font-size: 0.8rem; font-weight: 700; color: var(--text-sub); margin-top: 5px; font-style: normal; text-transform: uppercase; }
 
         /* --- RPG STATS --- */
         .rpg-stats { display: flex; flex-direction: column; gap: 15px; }
@@ -164,6 +149,8 @@
         .rpg-bar-bg { height: 10px; background: rgba(0,0,0,0.05); border-radius: 5px; overflow: hidden; position: relative; }
         .rpg-fill { height: 100%; border-radius: 5px; position: relative; }
         .rpg-fill::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.3) 25%, transparent 25%); background-size: 10px 100%; }
+
+        .tag { background: rgba(232, 67, 147, 0.1); color: var(--pink); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(232, 67, 147, 0.2); }
 
         /* Vibe Check */
         .vibe-actions { display: flex; gap: 10px; margin-bottom: 15px; }
@@ -186,13 +173,66 @@
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
-            .wrapper { grid-template-columns: 1fr; }
-            .sidebar { position: relative; top: 0; width: 100%; max-width: 450px; margin: 0 auto; }
-            .content-grid { grid-template-columns: 1fr; }
+            body { padding: 12px; }
+
+            .wrapper {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .sidebar {
+                position: relative;
+                top: 0;
+                width: 100%;
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
             .span-2 { grid-column: span 1; }
-            h1 { font-size: 1.75rem; }
-            .btn-group { flex-direction: row; }
-            button { flex: 1; font-size: 0.85rem; }
+            .footer { grid-column: span 1; }
+
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.1rem; }
+
+            .btn-group {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .btn-group button {
+                flex: 1;
+                min-width: 130px;
+                font-size: 0.82rem;
+                padding: 12px 8px;
+            }
+
+            .bio-list { grid-template-columns: 1fr 1fr; }
+
+            .vibe-actions { flex-direction: row; }
+            .vibe-btn { font-size: 0.82rem; padding: 10px 8px; }
+
+            .proposal-question { font-size: 1.2rem; }
+            .proposal-actions { flex-direction: row; }
+
+            .rpg-icon { width: 38px; height: 38px; font-size: 1rem; }
+            .rpg-header { font-size: 0.75rem; }
+
+            .social-links { gap: 10px; }
+            .social-btn { width: 40px; height: 40px; font-size: 1.1rem; }
+
+            .card { padding: 18px; border-radius: 18px; }
+            .card:hover { transform: none; }
+        }
+
+        @media (max-width: 400px) {
+            body { padding: 8px; }
+            h1 { font-size: 1.4rem; }
+            .btn-group { flex-direction: column; }
+            .btn-group button { width: 100%; }
+            .bio-list { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .proposal-actions { flex-direction: column; }
+            .vibe-actions { flex-direction: column; }
         }
     </style>
 </head>
@@ -240,8 +280,8 @@
         <div class="card border-blue">
             <h2 style="color: var(--blue)"><i class="fas fa-fingerprint"></i> Essentials</h2>
             <ul class="bio-list">
-                <li class="bio-item"><small>Location</small><span>Ahmedabad, Gujarat</span></li>
-                <li class="bio-item"><small>Age</small><span>18 Years</span></li>
+                <li class="bio-item"><small>Location</small><span>Ranchi, IN</span></li>
+                <li class="bio-item"><small>Age</small><span>20 Years</span></li>
                 <li class="bio-item"><small>Height</small><span>5'11"</span></li>
                 <li class="bio-item"><small>Degree</small><span>B.Tech</span></li>
             </ul>
@@ -249,32 +289,9 @@
 
         <div class="card border-green">
             <h2 style="color: var(--green)"><i class="fas fa-flag"></i> Green Flags</h2>
-            <ul class="green-flags">
-                <li><i class="fas fa-bolt"></i> Replies in 0.2 seconds</li>
-                <li><i class="fas fa-music"></i> Top-tier playlist curator</li>
-                <li><i class="fas fa-shield-alt"></i> Will defend you in comments</li>
-            </ul>
-        </div>
-
-        <div class="card border-yellow">
-            <h2 style="color: var(--yellow)"><i class="fas fa-star"></i> 5-Star Reviews</h2>
-            <div class="review">
-                <p>"He's handsome (when he showers)."</p>
-                <span>- My Mom</span>
-            </div>
-            <div class="review">
-                <p>"Best tech support I never paid for."</p>
-                <span>- My Grandma</span>
-            </div>
-        </div>
-
-        <div class="card border-cyan">
-            <h2 style="color: var(--cyan)"><i class="fas fa-magic"></i> Vibe Check</h2>
-            <div class="vibe-actions">
-                <button class="vibe-btn" id="toxicBtn" style="background: #ff7675; color: white;">🚩 Toxic Trait</button>
-                <button class="vibe-btn" id="futureBtn" style="background: #a29bfe; color: white;">🔮 Our Future</button>
-            </div>
-            <div class="vibe-result" id="funDisplay">> Press a button for truth.</div>
+            <p>✓ Replies in 0.2 seconds</p>
+            <p>✓ Top-tier playlist curator</p>
+            <p>✓ Will defend you in comments</p>
         </div>
 
         <div class="card span-2 border-orange">
@@ -302,6 +319,15 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="card border-cyan">
+            <h2 style="color: var(--cyan)"><i class="fas fa-magic"></i> Vibe Check</h2>
+            <div class="vibe-actions">
+                <button class="vibe-btn" id="toxicBtn" style="background: #ff7675; color: white;">🚩 Toxic Trait</button>
+                <button class="vibe-btn" id="futureBtn" style="background: #a29bfe; color: white;">🔮 Our Future</button>
+            </div>
+            <div class="vibe-result" id="funDisplay">> Press a button for truth.</div>
         </div>
 
         <div class="card span-2 border-pink" id="finalAsk">
@@ -418,4 +444,3 @@
 </script>
 </body>
 </html>
-
