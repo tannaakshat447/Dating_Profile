@@ -18,7 +18,7 @@
             --orange: #e17055;
             --pink: #e84393;
             --cyan: #00cec9;
-            --yellow: #f1c40f; /* Added for Reviews */
+            --yellow: #f1c40f;
             --glass-bg: rgba(255, 255, 255, 0.85);
             --glass-border: rgba(255, 255, 255, 0.95);
             --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
@@ -35,7 +35,7 @@
             padding: 20px;
         }
 
-        /* --- BACKGROUND --- */
+        /* --- ANIMATED BACKGROUND --- */
         .blob-cont { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; overflow: hidden; }
         .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6; animation: float 20s infinite alternate; }
         .b1 { width: 50vw; height: 50vw; background: #a29bfe; top: -10%; left: -10%; }
@@ -139,7 +139,7 @@
         .green-flags li { margin-bottom: 12px; display: flex; align-items: center; gap: 12px; font-weight: 500; font-size: 0.95rem; }
         .green-flags i { color: var(--green); font-size: 1.1rem; }
 
-        /* --- REVIEWS SECTION --- */
+        /* --- REVIEWS --- */
         .review {
             background: rgba(255,255,255,0.5);
             padding: 15px;
@@ -149,16 +149,7 @@
             border: 1px solid rgba(255,255,255,0.6);
         }
         .review p { margin: 0; font-size: 0.95rem; color: var(--text-main); }
-        .review span {
-            display: block;
-            text-align: right;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-sub);
-            margin-top: 5px;
-            font-style: normal;
-            text-transform: uppercase;
-        }
+        .review span { display: block; text-align: right; font-size: 0.8rem; font-weight: 700; color: var(--text-sub); margin-top: 5px; font-style: normal; text-transform: uppercase; }
 
         /* --- RPG STATS --- */
         .rpg-stats { display: flex; flex-direction: column; gap: 15px; }
@@ -173,9 +164,6 @@
         .rpg-bar-bg { height: 10px; background: rgba(0,0,0,0.05); border-radius: 5px; overflow: hidden; position: relative; }
         .rpg-fill { height: 100%; border-radius: 5px; position: relative; }
         .rpg-fill::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.3) 25%, transparent 25%); background-size: 10px 100%; }
-
-        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag { background: rgba(232, 67, 147, 0.1); color: var(--pink); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(232, 67, 147, 0.2); }
 
         /* Vibe Check */
         .vibe-actions { display: flex; gap: 10px; margin-bottom: 15px; }
@@ -280,6 +268,15 @@
             </div>
         </div>
 
+        <div class="card border-cyan">
+            <h2 style="color: var(--cyan)"><i class="fas fa-magic"></i> Vibe Check</h2>
+            <div class="vibe-actions">
+                <button class="vibe-btn" id="toxicBtn" style="background: #ff7675; color: white;">🚩 Toxic Trait</button>
+                <button class="vibe-btn" id="futureBtn" style="background: #a29bfe; color: white;">🔮 Our Future</button>
+            </div>
+            <div class="vibe-result" id="funDisplay">> Press a button for truth.</div>
+        </div>
+
         <div class="card span-2 border-orange">
             <h2 style="color: var(--orange)"><i class="fas fa-gamepad"></i> Character Build</h2>
             <div class="rpg-stats">
@@ -304,26 +301,6 @@
                         <div class="rpg-bar-bg"><div class="rpg-fill" style="width: 100%; background: var(--green);"></div></div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="card border-cyan">
-            <h2 style="color: var(--cyan)"><i class="fas fa-magic"></i> Vibe Check</h2>
-            <div class="vibe-actions">
-                <button class="vibe-btn" id="toxicBtn" style="background: #ff7675; color: white;">🚩 Toxic Trait</button>
-                <button class="vibe-btn" id="futureBtn" style="background: #a29bfe; color: white;">🔮 Our Future</button>
-            </div>
-            <div class="vibe-result" id="funDisplay">> Press a button for truth.</div>
-        </div>
-
-        <div class="card border-pink">
-            <h2 style="color: var(--pink)"><i class="fas fa-glass-cheers"></i> Ideally We Are...</h2>
-            <div class="tags">
-                <span class="tag">☕ Coffee Run</span>
-                <span class="tag">🚗 Long Drives</span>
-                <span class="tag">🍕 Pizza Night</span>
-                <span class="tag">🏸 Badminton</span>
-                <span class="tag">📸 Photo Walk</span>
             </div>
         </div>
 
